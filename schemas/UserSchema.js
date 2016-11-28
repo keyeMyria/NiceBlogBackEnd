@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-//申明一个mongoons对象
 var UserSchema = new mongoose.Schema({
     name: String,
     paw: String,
@@ -16,7 +15,6 @@ var UserSchema = new mongoose.Schema({
     }
 })
 
-//每次执行都会调用,时间更新操作
 UserSchema.pre('save', function(next) {
     if (this.isNew) {
         this.meta.createAt = this.meta.updateAt = Date.now();
@@ -27,20 +25,18 @@ UserSchema.pre('save', function(next) {
     next();
 })
 
-//查询的静态方法
 UserSchema.statics = {
-    fetch: function(cb) { //查询所有数据
+    fetch: function(cb) {
         return this
             .find()
-            .sort('meta.updateAt') //排序
-            .exec(cb) //回调
+            .sort('meta.updateAt')
+            .exec(cb)
     },
-    findById: function(id, cb) { //根据id查询单条数据
+    findById: function(id, cb) {
         return this
             .findOne({ _id: id })
             .exec(cb)
     }
 }
 
-//暴露出去的方法
 module.exports = UserSchema
