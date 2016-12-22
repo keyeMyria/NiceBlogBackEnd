@@ -1,3 +1,4 @@
+// express本身的一些配置
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,10 +6,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// 路由
 var index = require('./routers/index');
 var users = require('./routers/users');
 
-//连接mongodb
+// 连接mongodb
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/ngcommunity');
 var db = mongoose.connection;
@@ -17,6 +19,7 @@ db.once('open', function() {
     console.log("数据库连接成功...");
     // console.log(db);
 });
+
 
 var app = express();
 
