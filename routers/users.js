@@ -13,8 +13,8 @@ router.get('/userlist', function(req, res, next) {
         if (err) {
             console.log(err);
         }
-        //这里也可以json的格式直接返回数据res.json({data: users});
-        res.render('users', { title: '用户列表', users: users })
+        //直接返回用户数组
+        res.json(users);
     })
 });
 

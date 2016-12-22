@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./actions/index');
-var users = require('./actions/users');
+var index = require('./routers/index');
+var users = require('./routers/users');
 
 //连接mongodb
 var mongoose = require('mongoose');
