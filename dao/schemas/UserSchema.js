@@ -22,18 +22,4 @@ UserSchema.pre('save', function(next) {
     next();
 })
 
-UserSchema.statics = {
-    fetch: function(cb) {
-        return this
-            .find()
-            .sort('updateAt')
-            .exec(cb)
-    },
-    findById: function(id, cb) {
-        return this
-            .findOne({ _id: id })
-            .exec(cb)
-    }
-}
-
 module.exports = UserSchema
