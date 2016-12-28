@@ -7,18 +7,19 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // import routers
-var index = require('./routers/index');
-var user = require('./routers/user');
+var indexRouter = require('./routers/IndexRouter');
+var sysInfoRouter = require('./routers/SysInfoRouter');
+var userRouter = require('./routers/UserRouter');
+var postRouter = require('./routers/PostRouter');
 
 // connect to mongodb
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ngcommunity');
+mongoose.connect('mongodb://localhost/NiceFish');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, '数据库连接错误:'));
 db.once('open', function() {
     console.log("数据库连接成功...");
 });
-
 
 var app = express();
 
@@ -34,8 +35,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/user', user);
+app.use('/', indexRouter);
+app.use('/user', userRouter);
+app.use('/post', postRouter);
+app.use('/sysinfo', sysInfoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,20 +1,19 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var UserModel = require('../dao/models/UserModel');
+var userRouter = express.Router();
 
-var router = express.Router();
-
-router.get('/getAllUsers', function(req, res, next) {
-    UserModel.fetch(function(err, users) {
+userRouter.get('/getAllUsers', function(req, res, next) {
+    UserModel.getAllUsers(function(err, users) {
         if (err) {
             console.log(err);
             throw err;
         }
         res.json(users);
-    })
+    });
 });
 
-router.get('/findUserById/:_id', function(req, res, next) {
+userRouter.get('/findUserById/:_id', function(req, res, next) {
     var userId = req.params._id;
     UserModel.findUserById(userId, function(err, user) {
         if (err) {
@@ -22,10 +21,10 @@ router.get('/findUserById/:_id', function(req, res, next) {
             throw err;
         }
         res.json(user);
-    })
+    });
 });
 
-router.post('/createUser', function(req, res, next) {
+userRouter.post('/createUser', function(req, res, next) {
     var user=req.body;
     UserModel.createUser(user,function(err,user){
         if(err){
@@ -36,7 +35,7 @@ router.post('/createUser', function(req, res, next) {
     });
 });
 
-router.put('/updateUserInfo/:_id', function(req, res, next) {
+userRouter.put('/updateUserInfo/:_id', function(req, res, next) {
     var id=req.params._id;
     var newInfo=req.body;
     UserModel.updateUserInfo(id,newInfo,{},function(err,user){
@@ -48,7 +47,7 @@ router.put('/updateUserInfo/:_id', function(req, res, next) {
     });
 });
 
-router.delete('/deleteUserById/:_id', function(req, res, next) {
+userRouter.delete('/deleteUserById/:_id', function(req, res, next) {
     var id=req.params._id;
     UserModel.deleteUserById(id,function(err,user){
         if(err){
@@ -59,8 +58,8 @@ router.delete('/deleteUserById/:_id', function(req, res, next) {
     });
 });
 
-router.get('/delUser', function(req, res, next) {
+userRouter.get('/delUser', function(req, res, next) {
     res.send('删除用户，还没实现...');
 });
 
-module.exports = router;
+module.exports = userRouter;
