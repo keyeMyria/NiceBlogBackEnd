@@ -13,10 +13,10 @@ var userRouter = express.Router();
 //     });
 // });
 
-userRouter.get('/getUserByPage/:page/:limit', function(req, res, next) {
-    var page=parseInt(req.params.page);
-    var limit=parseInt(req.params.limit);
-    UserModel.getUserByPage(page,limit,function(err, result) {
+userRouter.get('/getUsersByPage/:page/:limit', function(req, res, next) {
+    var page = parseInt(req.params.page);
+    var limit = parseInt(req.params.limit);
+    UserModel.getUsersByPage(page, limit, function(err, result) {
         if (err) {
             console.log(err);
             throw err;
@@ -25,9 +25,19 @@ userRouter.get('/getUserByPage/:page/:limit', function(req, res, next) {
     });
 });
 
-userRouter.get('/findUserById/:_id', function(req, res, next) {
+userRouter.get('/getAllUsersCount', function(req, res, next) {
+    UserModel.getAllUsersCount(function(err, result) {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+        res.json(result);
+    });
+});
+
+userRouter.get('/getUserById/:_id', function(req, res, next) {
     var userId = req.params._id;
-    UserModel.findUserById(userId, function(err, user) {
+    UserModel.getUserById(userId, function(err, user) {
         if (err) {
             console.log(err);
             throw err;

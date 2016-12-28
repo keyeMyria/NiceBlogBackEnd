@@ -7,13 +7,21 @@ UserModel.getAllUsers = function(callback) {
     return this.find().sort('updateAt').exec(callback);
 }
 
-UserModel.getUserByPage = function(page, limit, callback) {
+UserModel.getUsersByPage = function(page, limit, callback) {
     dbHelper.pageQuery(page, limit, UserModel, '', {}, {
         date: 'desc'
-    },callback);
+    }, callback);
 }
 
-UserModel.findUserById = function(id, callback) {
+UserModel.getAllUsersCount = function(callback) {
+    return this.count().exec(callback);
+}
+
+UserModel.getUsersCountCondition = function(condition, callback) {
+    return this.count(condition).exec(callback);
+}
+
+UserModel.getUserById = function(id, callback) {
     return this.findOne({ _id: id }).exec(callback);
 }
 
@@ -30,8 +38,7 @@ UserModel.updateUserInfo = function(id, newInfo, options, callback) {
 }
 
 UserModel.deleteUserById = function(id, callback) {
-    var query = { _id: id };
-    return UserModel.remove(query, callback);
+    return UserModel.remove({ _id: id }, callback);
 }
 
 module.exports = UserModel;
