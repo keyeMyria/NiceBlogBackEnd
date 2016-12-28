@@ -1,9 +1,16 @@
 var mongoose = require('mongoose');
 var UserSchema = require('../../dao/schemas/UserSchema');
 var UserModel = mongoose.model('user', UserSchema);
+var dbHelper = require('../../dao/utils/DBHelper');
 
 UserModel.getAllUsers = function(callback) {
     return this.find().sort('updateAt').exec(callback);
+}
+
+UserModel.getUserByPage = function(page, limit, callback) {
+    dbHelper.pageQuery(page, limit, UserModel, '', {}, {
+        date: 'desc'
+    },callback);
 }
 
 UserModel.findUserById = function(id, callback) {

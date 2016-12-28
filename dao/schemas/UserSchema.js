@@ -1,25 +1,49 @@
 var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
-    name: String,
-    pwd: String,
-    createAt: {
-        type: Date,
-        default: Date.now()
+    _id: Number,
+    articles: Number,
+    articlesList: [Number],
+    avatar: String,
+    collections: Number,
+    collectionsList: [],
+    date: Number,
+    desc: String,
+    email: String,
+    fans: Number,
+    fansList: [
+        Number
+    ],
+    follow: Number,
+    followList: [
+        Number
+    ],
+    lastLoginDate: Number,
+    locked: Boolean,
+    login: [{}],
+    loginAttempts: Number,
+    markList: [
+        Number
+    ],
+    messages: {
+        article: [],
+        collection: [],
+        comment: [],
+        fan: [],
+        receive: []
     },
-    updateAt: {
-        type: Date,
-        default: Date.now()
-    }
-})
-
-UserSchema.pre('save', function(next) {
-    if (this.isNew) {
-        this.createAt = this.updateAt = Date.now();
-    } else {
-        this.updateAt = Date.now();
-    }
-    next();
-})
+    name: String,
+    passwd: String,
+    readtimestamp: Number,
+    receiveList: [],
+    resetDate: Number,
+    resetKey: String,
+    role: Number,
+    score: Number,
+    sendList: [],
+    sex: String,
+    social: {},
+    tagsList: [Number]
+});
 
 module.exports = UserSchema

@@ -3,13 +3,25 @@ var mongoose = require('mongoose');
 var UserModel = require('../dao/models/UserModel');
 var userRouter = express.Router();
 
-userRouter.get('/getAllUsers', function(req, res, next) {
-    UserModel.getAllUsers(function(err, users) {
+// userRouter.get('/getAllUsers', function(req, res, next) {
+//     UserModel.getAllUsers(function(err, users) {
+//         if (err) {
+//             console.log(err);
+//             throw err;
+//         }
+//         res.json(users);
+//     });
+// });
+
+userRouter.get('/getUserByPage/:page/:limit', function(req, res, next) {
+    var page=parseInt(req.params.page);
+    var limit=parseInt(req.params.limit);
+    UserModel.getUserByPage(page,limit,function(err, result) {
         if (err) {
             console.log(err);
             throw err;
         }
-        res.json(users);
+        res.json(result);
     });
 });
 
@@ -25,9 +37,9 @@ userRouter.get('/findUserById/:_id', function(req, res, next) {
 });
 
 userRouter.post('/createUser', function(req, res, next) {
-    var user=req.body;
-    UserModel.createUser(user,function(err,user){
-        if(err){
+    var user = req.body;
+    UserModel.createUser(user, function(err, user) {
+        if (err) {
             console.log(err);
             throw err;
         }
@@ -36,10 +48,10 @@ userRouter.post('/createUser', function(req, res, next) {
 });
 
 userRouter.put('/updateUserInfo/:_id', function(req, res, next) {
-    var id=req.params._id;
-    var newInfo=req.body;
-    UserModel.updateUserInfo(id,newInfo,{},function(err,user){
-        if(err){
+    var id = req.params._id;
+    var newInfo = req.body;
+    UserModel.updateUserInfo(id, newInfo, {}, function(err, user) {
+        if (err) {
             console.log(err);
             throw err;
         }
@@ -48,9 +60,9 @@ userRouter.put('/updateUserInfo/:_id', function(req, res, next) {
 });
 
 userRouter.delete('/deleteUserById/:_id', function(req, res, next) {
-    var id=req.params._id;
-    UserModel.deleteUserById(id,function(err,user){
-        if(err){
+    var id = req.params._id;
+    UserModel.deleteUserById(id, function(err, user) {
+        if (err) {
             console.log(err);
             throw err;
         }
