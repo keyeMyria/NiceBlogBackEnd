@@ -1,3 +1,5 @@
+'use strict';
+
 // express config
 var express = require('express');
 var path = require('path');
@@ -16,9 +18,9 @@ var postRouter = require('./routers/PostRouter');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/NiceFish');
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, '数据库连接错误:'));
+db.on('error', console.error.bind(console, 'unable to connect to mongodb'));
 db.once('open', function() {
-    console.log("数据库连接成功...");
+    console.log("connect to mongodb success...");
 });
 
 var app = express();

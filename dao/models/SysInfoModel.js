@@ -1,3 +1,5 @@
+'use strict';
+
 var mongoose = require('mongoose');
 var SysInfoSchema = require('../../dao/schemas/SysInfoSchema');
 var SysInfoModel = mongoose.model('sysinfo', SysInfoSchema);

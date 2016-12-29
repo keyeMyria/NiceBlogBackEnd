@@ -1,7 +1,13 @@
+'use strict';
+
 var mongoose = require('mongoose');
+var SEQModel = require('../models/SEQModel');
 
 var UserSchema = new mongoose.Schema({
     _id: Number,
+    name: { type: String, required: true },
+    passwd: { type: String, required: true },
+    email: { type: String, required: true },
     articles: Number,
     articlesList: [Number],
     avatar: String,
@@ -9,22 +15,15 @@ var UserSchema = new mongoose.Schema({
     collectionsList: [],
     date: Number,
     desc: String,
-    email: String,
     fans: Number,
-    fansList: [
-        Number
-    ],
+    fansList: [Number],
     follow: Number,
-    followList: [
-        Number
-    ],
+    followList: [Number],
     lastLoginDate: Number,
     locked: Boolean,
     login: [{}],
     loginAttempts: Number,
-    markList: [
-        Number
-    ],
+    markList: [Number],
     messages: {
         article: [],
         collection: [],
@@ -32,8 +31,6 @@ var UserSchema = new mongoose.Schema({
         fan: [],
         receive: []
     },
-    name: String,
-    passwd: String,
     readtimestamp: Number,
     receiveList: [],
     resetDate: Number,
@@ -44,6 +41,18 @@ var UserSchema = new mongoose.Schema({
     sex: String,
     social: {},
     tagsList: [Number]
+});
+
+UserSchema.pre('save', function(next) {
+    var doc = this;
+    doc.date=new Date().getTime();
+    SEQModel.getNextVal(function(error, IDSEQ) {
+        if (error) {
+            return next(error);
+        }
+        doc._id = IDSEQ.curr_val;
+        next();
+    });
 });
 
 module.exports = UserSchema

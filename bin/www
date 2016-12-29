@@ -3,7 +3,6 @@
 /**
  * Module dependencies.
  */
-
 var app = require('../app');
 var debug = require('debug')('nicefish-backend:server');
 var http = require('http');
@@ -11,9 +10,11 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
+var serverPort=require("../SYS-CONFIG").port;
 
-var port = normalizePort(process.env.PORT || '3200');
+var port = normalizePort(process.env.PORT ||serverPort);
 app.set('port', port);
+console.log("service listening on port:"+port);
 
 /**
  * Create HTTP server.

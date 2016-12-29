@@ -1,8 +1,11 @@
+'use strict';
+
 var express = require('express');
 var mongoose = require('mongoose');
 var UserModel = require('../dao/models/UserModel');
 var userRouter = express.Router();
 
+// Query without conditions, too many results, very dangourse!
 // userRouter.get('/getAllUsers', function(req, res, next) {
 //     UserModel.getAllUsers(function(err, users) {
 //         if (err) {
@@ -78,10 +81,6 @@ userRouter.delete('/deleteUserById/:_id', function(req, res, next) {
         }
         res.json(user);
     });
-});
-
-userRouter.get('/delUser', function(req, res, next) {
-    res.send('删除用户，还没实现...');
 });
 
 module.exports = userRouter;
