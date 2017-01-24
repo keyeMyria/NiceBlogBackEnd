@@ -5,22 +5,24 @@ var PostSchema = require('../../dao/schemas/PostSchema');
 var PostModel = mongoose.model('article', PostSchema);
 var dbHelper = require('../../dao/utils/DBHelper');
 
+var postReg="^(?:(?!评论)+)";
+
 PostModel.getAllPosts = function(callback) {
-    return this.find().exec(callback);
+    return this.find({title:{$regex:postReg}}).exec(callback);
 }
 
 PostModel.getPostsByPage = function(page, limit, callback) {
-    dbHelper.pageQuery(page, limit, PostModel, '', {}, {
+    dbHelper.pageQuery(page, limit, PostModel, '', {title:{$regex:postReg}}, {
         date: 'desc'
     }, callback);
 }
 
 PostModel.getPostById = function(id, callback) {
-    return this.findOne({ _id: id }).exec(callback);
+    return this.findOne({ _id: id,title:{$regex:postReg}}).exec(callback);
 }
 
 PostModel.getAllPostsCount = function(callback) {
-    return this.count().exec(callback);
+    return this.count({title:{$regex:postReg}}).exec(callback);
 }
 
 PostModel.createPost = function(post, callback) {
