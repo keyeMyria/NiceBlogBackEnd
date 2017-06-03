@@ -1,16 +1,16 @@
 # NiceFish-BackEnd
 
-MyBlog是一个基于MEAN stack技术栈(MongoDB + Express + Angular4 + NodeJs)开发的系列项目。
+MyBlog是一个基于大漠穷秋NiceFish项目开发的个人技术博客系列项目，使用MEAN-stack技术栈(MongoDB + Express + Angular4 + NodeJs)开发。
 
-- 【MyBlog】：是一个博客系统，前端基于Angular 4.0.0 + ng-Bootstrap。http://github.com/CN-Tower/MyBlog
+- 【MyBlog】：这是一个博客系统，前端基于Angular 4.0.0 + ng-Bootstrap。http://github.com/CN-Tower/MyBlog
 
-- 【MyBlog-Admin】：是MyBlog的系统管理界面，基于Angular 4.0.0。http://github.com/CN-Tower/MyBlogAdmin
+- 【MyBlog-Admin】：这是MyBlog的系统管理界面，基于Angular 4.0.0。http://github.com/CN-Tower/MyBlogAdmin
 
 - 【MyBlog-Ionic】：这是MyBlog的移动端，基于ionic。http://github.com/CN-Tower/MyBlogIonic
 
 - 【MyBlog-BackEnd】：这是MyBlog的后台，基于NodeJS + Express + MongoDB。http://github.com/CN-Tower/MyBlogBackEnd
 
-一起来玩儿吧！很好玩儿哦！
+喜欢折腾，乐于分享！一起来玩吧，很好玩的哦 :-)
 
 这是NiceFISH的服务端代码，我把它分成一个独立的项目来写，这样看起来更加清晰一些。
 这个RESTful服务端是基于NodeJS+Express+MongoDB实现的。
