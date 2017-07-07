@@ -1,16 +1,18 @@
-# NiceFish-BackEnd
+# NiceBlogBackEnd（耐思博客）
 
-MyBlog是一个基于大漠穷秋NiceFish项目开发的个人技术博客系列项目，使用MEAN-stack技术栈(MongoDB + Express + Angular4 + NodeJs)开发。
+NiceBlog is a series projects about a personal technology blog, Which was based on the project of @AngularClass's "angular-starter" and the project of @Funoqiongqiu's "NiceFish".
 
-- 【MyBlog】：这是一个博客系统，前端基于Angular 4.0.0 + ng-Bootstrap。http://github.com/CN-Tower/MyBlog
+- [NiceBlog]：The main App of the series projects，Front-end is based on Angular4 + bootstrap + Webpack。http://github.com/CN-Tower/NiceBlog
 
-- 【MyBlog-Admin】：这是MyBlog的系统管理界面，基于Angular 4.0.0。http://github.com/CN-Tower/MyBlogAdmin
+- [NiceBlogAdmin]：This is the system admin interface of NiceBlog，based on AngularCLI + MaterialUI。http://github.com/CN-Tower/NiceBlogAdmin
 
-- 【MyBlog-Ionic】：这是MyBlog的移动端，基于ionic。http://github.com/CN-Tower/MyBlogIonic
+- [NiceBlogIonic]：The mobile App of NiceBlog, based on Ionic。http://github.com/CN-Tower/NiceBlogIonic
 
-- 【MyBlog-BackEnd】：这是MyBlog的后台，基于NodeJS + Express + MongoDB。http://github.com/CN-Tower/MyBlogBackEnd
+- [NiceBlogElectron]：The Desk Top App of NiceBlog, based on Electron。http://github.com/CN-Tower/NiceBlogElectron
 
-喜欢折腾，乐于分享！一起来玩吧，很好玩的哦 :-)
+- [NiceBlogBackEnd]：The back-end server of NiceBlog，based on NodeJS + Express + MongoDB。http://github.com/CN-Tower/NiceBlogBackEnd
+
+Love To Research and Happy To Share! Join me, and enjoy it :-)
 
 这是NiceFISH的服务端代码，我把它分成一个独立的项目来写，这样看起来更加清晰一些。
 这个RESTful服务端是基于NodeJS+Express+MongoDB实现的。
