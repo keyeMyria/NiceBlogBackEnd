@@ -6,15 +6,15 @@ var UserModel = require('../dao/models/UserModel');
 var userRouter = express.Router();
 
 // Query without conditions, too many results, very dangourse!
-// userRouter.get('/getAllUsers', function(req, res, next) {
-//     UserModel.getAllUsers(function(err, users) {
-//         if (err) {
-//             console.log(err);
-//             throw err;
-//         }
-//         res.json(users);
-//     });
-// });
+userRouter.get('/getAllUsers', function(req, res, next) {
+    UserModel.getAllUsers(function(err, users) {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+        res.json(users);
+    });
+});
 
 userRouter.get('/getUsersByPage/:page/:limit', function(req, res, next) {
     var page = parseInt(req.params.page);
